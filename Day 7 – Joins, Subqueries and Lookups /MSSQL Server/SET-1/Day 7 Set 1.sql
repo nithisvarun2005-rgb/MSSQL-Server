@@ -129,7 +129,7 @@ VALUES
 (9, 104, '2026-01-19', 'Delivered'),
 (10, 105, '2026-02-01', 'Shipment Created');
 
--- 1.Solve ten business questions using INNER, LEFT, FULL and self joins
+-- Question 1.Solve ten business questions using INNER, LEFT, FULL and self joins
 
 -- Join type: INNER JOIN
 -- 1.Find shipments delayed by more than two days with carrier names.
@@ -248,7 +248,7 @@ INNER JOIN Hubs H
 INNER JOIN Carriers CR
     ON S.CarrierID = CR.CarrierID;
 
--- 2.Find customers who shipped to every hub using IN, EXISTS, ANY and ALL.
+--Question 2.Find customers who shipped to every hub using IN, EXISTS, ANY and ALL.
 -- Using IN – Customers who shipped to a particular hub
 SELECT CustomerID, CustomerName
 FROM Customers
@@ -327,7 +327,7 @@ HAVING AVG(CAST(DATEDIFF(DAY, S.ExpectedDeliveryDate, S.ActualDeliveryDate) AS D
     WHERE ActualDeliveryDate IS NOT NULL
 );
 
--- 3. Rewrite two subqueries as joins
+-- Question 3. Rewrite two subqueries as joins
 -- Find customers who have shipments using a subquery.
 
 -- Subquery approach:
@@ -354,6 +354,7 @@ The JOIN approach makes the relationship between the tables explicit.
 DISTINCT avoids duplicate customers when they have multiple shipments.
 */
 
+-- Question.4 Nested subquery
 -- Find the second-highest shipping cost per hub.
 SELECT
     H.HubID,
