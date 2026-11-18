@@ -50,7 +50,7 @@ The main objective is to eliminate data redundancy, maintain data integrity, and
   - `deleteOne()`
 
 ## Project File
-- `Day 5 Set 1.js` – Database and table creation scripts.
+- `Day 5 Set 1.js` – MongoDB collection creation, validation, and CRUD operations.
   
 
 ## Expected Outcome
