@@ -166,8 +166,126 @@ Three aggregation pipelines are implemented using `$lookup`:
 | `Day 7 Set 2.sql` | Contains advanced SQL queries using joins and subqueries. |
 | `Day 7 Set 2.js` | Contains MongoDB aggregation pipelines using `$lookup`. |
 
+
 ## Expected Outcome
 
 This project helps analyze banking loan operations by identifying overdue loans, monitoring repayment activity, evaluating customer loan exposure, examining branch performance, and identifying guarantors who are also borrowers.
 
 It also demonstrates how SQL Server and MongoDB can be used to retrieve and analyze related financial information.
+
+# SET-3
+
+# Retail Returns and Refunds Analysis
+
+## Project Overview
+
+This project analyses retail returns, refunds, products, customers, stores, employees and customer feedback using SQL Server and MongoDB.
+
+The main objective is to understand product return rates, customer return behaviour, refund values, store performance and customer feedback.
+
+## Business Scenario
+
+A retailer wants to analyse its return and refund operations to identify products with high return rates, customers who have returned products without receiving refunds, stores with high refund values and employee-manager relationships.
+
+## Technologies Used
+
+- Microsoft SQL Server
+- T-SQL
+- MongoDB
+- MongoDB Compass
+- SQL Server Management Studio (SSMS)
+
+## Database Tables
+
+The project uses 10 relational tables.
+
+| No. | Table | Description |
+|---:|---|---|
+| 1 | Customers | Customer information |
+| 2 | Products | Product information |
+| 3 | Stores | Store and region information |
+| 4 | Employees | Employee and manager information |
+| 5 | Sales | Sales transaction details |
+| 6 | SaleItems | Products and quantities sold |
+| 7 | Returns | Return transaction details |
+| 8 | ReturnItems | Products and quantities returned |
+| 9 | Refunds | Refund amount, date and status |
+| 10 | ReturnFeedback | Customer ratings and comments |
+
+## Tasks Completed
+
+### 1. SQL Reporting Queries
+
+Created SQL queries to:
+
+- Identify products with a return rate above 10%.
+- Find customers who have returns without corresponding refunds.
+- Identify stores with the highest refund value.
+- Display employees and their managers using a self join.
+- Display returns with customer and product details.
+- Calculate total refunds for each store.
+- Find customers who returned more than one product.
+- Identify returns without refund records.
+- Find products with above-average return quantities.
+- Generate a complete return and refund report.
+
+### 2. IN, NOT IN and NOT EXISTS
+
+- Used `IN` to find customers who made returns.
+- Used `NOT IN` to find customers who never made returns.
+- Demonstrated the NULL problem with `NOT IN`.
+- Corrected the NULL problem using `NOT EXISTS`.
+
+### 3. ANY and ALL
+
+Compared refund values between stores in the same region.
+
+- `ANY`: Refund value greater than at least one other store in the region.
+- `ALL`: Refund value greater than every other store in the region.
+
+### 4. Nested Subqueries
+
+Created nested subqueries to:
+
+- Find products whose return rate is above the average product return rate.
+- Find stores whose refund value is above the average refund value across all stores.
+
+### 5. MongoDB Aggregation Pipelines
+
+Created three aggregation pipelines using `$lookup`:
+
+- Join returns with customer feedback.
+- Join returns with sales, customers and feedback.
+- Identify returns without customer feedback.
+
+## SQL and MongoDB Concepts
+
+**SQL Server:**
+- INNER JOIN
+- LEFT JOIN
+- SELF JOIN
+- GROUP BY
+- HAVING
+- IN and NOT IN
+- EXISTS and NOT EXISTS
+- ANY and ALL
+- Nested subqueries
+
+**MongoDB:**
+- `$lookup`
+- `$unwind`
+- `$match`
+- `$project`
+
+## Project Files
+
+| File | Description |
+|---|---|
+| `Day 7 Set 3.sql` | Contains advanced SQL queries using joins and subqueries. |
+| `Day 7 Set 3.js` | Contains MongoDB aggregation pipelines using `$lookup`. |
+
+
+
+## Expected Outcome
+
+This project demonstrates how SQL Server joins, subqueries and comparison operators can be used to analyse retail return and refund data. MongoDB `$lookup` pipelines provide equivalent document-based join operations for combining return records with customer and feedback information.
