@@ -177,11 +177,8 @@ Demonstrate the following operations:
 - Understand how MongoDB supports variable document structures.
 
 ## Project Files
-- `schema.sql` – Database and table creation scripts.
-- `seed_data.sql` – Sample data insertion and SQL operations.
-- `collections.js` – MongoDB collection creation, validation, insertion, and retrieval.
-- `ER_Diagram.png` – Entity Relationship diagram.
-- `assumptions.md` – Three assumptions made during database design.
+- `Day 5 Set 3.sql` – Database and table creation scripts.
+- `Day 5 Set 3.js` – MongoDB collection creation, validation, insertion, and retrieval.
 
 ## Expected Outcome
 A normalized hospital database that maintains structured patient and billing information, along with a flexible MongoDB collection for clinical notes.
