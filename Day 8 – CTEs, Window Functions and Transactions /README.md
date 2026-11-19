@@ -15,10 +15,10 @@ Technologies Used
 
 # File	Description
 
-Day 8 Set 1.sql	Creates sample SQL Server tables, demonstrates a deliberate failure and rollback, then performs a successful transfer with fee rollback to a savepoint.
+Day 8 Set 1.sql -	Creates sample SQL Server tables, demonstrates a deliberate failure and rollback, then performs a successful transfer with fee rollback to a savepoint.
 
 
-Day 8 Set 1.js	Implements a MongoDB multi-document funds transfer.
+Day 8 Set 1.js	- Implements a MongoDB multi-document funds transfer.
 
 
 
