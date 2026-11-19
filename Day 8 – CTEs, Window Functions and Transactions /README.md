@@ -127,8 +127,98 @@ If either operation fails, the transaction is aborted. MongoDB multi-document tr
 # File	Description
 
 Day 8 Set 2.sql -Contains all SQL tasks, including table creation, sample data, transactions, concurrency, ranking and CTE.
-Day 8 Set 2.js	-Contains the MongoDB transaction implementation.
 
+Day 8 Set 2.js	-Contains the MongoDB transaction implementation.
 
 # Conclusion
 The assignment demonstrates atomic seat reservation, concurrency control, ranking functions, CTEs, running totals and MongoDB transactions. These techniques help prevent duplicate seat bookings and keep booking records consistent.
+
+
+
+# SET-3
+# Retail Inventory and Order Management
+
+# Project Overview
+This project demonstrates how an online retailer can reserve stock when an order is placed and avoid inconsistent inventory when stock is insufficient or payment/order processing fails.
+
+# The project uses:
+- Microsoft SQL Server (T-SQL) for relational database operations.
+- MongoDB with Node.js for a single-document atomic stock update.
+
+# File Description
+This project contains two implementation files:
+
+# File Name	Description
+Day 8 Task 3.sql	Contains database and table creation, sample data insertion, the stock reservation transaction with rollback demonstration, the correlated stock-average query, the category-wise top-three sales report using a CTE and ROW_NUMBER(), and monthly sales comparison using LAG() and LEAD().
+Day 8 Task 3.js	Contains the MongoDB single-document stock decrement example using updateOne(), a stock-availability condition with $gte, and $inc to decrement stock atomically.
+
+
+# Database Structure
+The SQL Server database is named RetailDB.
+Table	Purpose
+Categories	Stores product categories.
+Products	Stores product information, category, available stock and unit price.
+Customers	Stores customer details.
+Orders	Stores order details, customer, date and status.
+OrderLines	Stores the products, quantities and unit prices belonging to each order.
+
+
+# Relationships
+- One category can contain many products.
+- One customer can place many orders.
+- One order can contain many order lines.
+- Each order line refers to one product.
+
+# Sample Data
+The setup script inserts:
+- 3 categories
+- 9 products
+- 5 customers
+- 6 orders
+- 12 order lines
+
+The sample orders are marked PAID and have dates in January, February and March 2026. They are used by the sales-ranking and month-on-month reporting queries.
+Question-wise Implementation
+
+#Question 1 – Stock reservation transaction
+The SQL transaction:
+1. Checks that each requested product exists and has enough stock.
+2. Decrements product stock.
+3. Inserts the order.
+4. Inserts the order lines.
+5. Commits only if all operations succeed.
+If stock is insufficient, an error is raised and the transaction is rolled back. To demonstrate rollback, the sample test requests 999 units of product 103, although only 20 are available. The stock and order tables remain unchanged by that failed attempt.
+
+Change the test quantity to 2 to demonstrate a successful order.
+
+# Question 2 – Correlated subquery
+Lists products whose stock quantity is below the average stock quantity of products in the same category. The inner query refers to the outer product's CategoryID.
+
+# Question 3 – CTE and ROW_NUMBER
+Calculates paid sales revenue for each product, ranks products within each category using ROW_NUMBER() and PARTITION BY, and returns up to the top three products in each category.
+
+Sales revenue is calculated as Quantity * UnitPrice.
+
+# Question 4 – LAG and LEAD
+Aggregates paid sales by product and month. LAG() returns the previous recorded sales month's revenue, while LEAD() returns the next recorded sales month's revenue. The difference between current and previous sales is shown as the month-on-month change.
+
+The query compares recorded sales months. It does not generate missing months with zero sales.
+
+# Question 5 – MongoDB atomic stock update
+The JavaScript example uses updateOne() with a filter requiring stockQuantity to be at least the requested quantity. $inc decrements the stock in one atomic document update.
+
+A multi-document transaction is needed when stock changes, order insertion and order-line insertion must all succeed or fail together. A single-document atomic update is sufficient when only one product document needs to be changed.
+
+# Important Concepts
+- BEGIN TRANSACTION, COMMIT and ROLLBACK
+- TRY...CATCH, THROW and XACT_STATE()
+- UPDLOCK and HOLDLOCK
+- Correlated subqueries
+- Common Table Expressions (CTEs)
+- ROW_NUMBER() and PARTITION BY
+- LAG() and LEAD()
+- MongoDB updateOne(), $gte and $inc
+- Single-document atomicity versus multi-document transactions
+
+# Conclusion
+This project demonstrates safe stock reservation, rollback on insufficient inventory, category-based inventory analysis, product sales ranking, monthly sales comparisons and MongoDB atomic stock updates
