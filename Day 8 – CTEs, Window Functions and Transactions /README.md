@@ -1,5 +1,7 @@
 # SET -1
+
 # Bank Funds Transfer – Database Transactions Assignment
+
 # Project Overview
 This assignment demonstrates safe money transfers using SQL Server transactions and MongoDB multi-document transactions. It covers ACID atomicity, error handling, rollback, savepoints, monthly statements, and transaction isolation.
 Technologies Used
@@ -8,14 +10,19 @@ Technologies Used
 - MongoDB 8.x
 - Node.js
 - MongoDB Node.js driver (mongodb)
+
 # Project Files
+
 # File	Description
+
 Day 8 Set 1.sql	Creates sample SQL Server tables, demonstrates a deliberate failure and rollback, then performs a successful transfer with fee rollback to a savepoint.
+
+
 Day 8 Set 1.js	Implements a MongoDB multi-document funds transfer.
 
 
 
-Database Design
+# Database Design
 Accounts
 Column	Type	Description
 AccountID	INT	Primary key
