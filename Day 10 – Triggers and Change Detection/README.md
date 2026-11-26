@@ -11,7 +11,7 @@ The retailer needs to audit price updates, reject invalid price changes, test mu
 
 # Files
 - Day 10 Set 1.sql – contains the SQL Server trigger definitions and test queries.
-- Day 10 Set 2.js – watches the MongoDB products collection for price changes.
+- Day 10 Set 1.js – watches the MongoDB products collection for price changes.
 
 ## Conclusion
 
